@@ -36,6 +36,7 @@ public class PageHeader extends BasePage {
     By topMenuItem_Reviews = By.xpath(".//*[@id='ui-id-6']/span");
     By topMenuItem_Account = By.xpath("//ul[@class='header links']//span[text()='Account']");
     By topMenuItem_SignOut = By.xpath("//ul[@class='header links']//a[contains(text(),'Sign Out')]");
+    By topMenuItem_Magazine = By.xpath("//ul[@id='ui-id-1']/li/a/span[contains(text(), 'Magazine')]");
 
     //cart
     By showCartButton = By.cssSelector("a.action.showcart");
@@ -70,6 +71,12 @@ public class PageHeader extends BasePage {
         reporter.info("Click on SHOP menu item");
         clickOnElement(topMenuItem_Shop);
         return ShopPage.Instance;
+    }
+
+    public MagazinePage clickMagazineItem(){
+        reporter.info("Click on Magazine menu item");
+        clickOnElement(topMenuItem_Magazine);
+        return MagazinePage.Instance;
     }
 
     public LoginPage clickSignInMenuItem(){

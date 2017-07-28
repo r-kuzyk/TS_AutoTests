@@ -6,7 +6,6 @@ import java.util.List;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
-import org.testng.annotations.DataProvider;
 import utils.FileIO;
 import utils.ReporterManager;
 import utils.Tools;
@@ -168,8 +167,8 @@ public class BasePage {
         }
     }
 
-    public WebElement getWebElement(By by) {
-        return findElement(by);
+    public List<WebElement> getWebElement(By by) {
+        return (List<WebElement>) findElement(by);
     }
 
 

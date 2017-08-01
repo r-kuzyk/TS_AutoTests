@@ -65,6 +65,8 @@ public class AccountPage extends LoginPage {
     By accountInfoChangePasswordButton = By.xpath("//SPAN[text()='Change Password']");
     By newEmailField = By.id("email");
     By currentPasswordField = By.id("current-password");
+    By newPasswordField = By.id("password");
+    By confirmNewPasswordField = By.id("password-confirmation");
     By saveAccountInfoButton = By.xpath("//SPAN[text()='Save']");
 
     //Address Book Elements
@@ -149,24 +151,65 @@ public class AccountPage extends LoginPage {
     }
 
     public AccountPage clickOnChangeEmailButton(){
-        reporter.info("Click on change Email");
+        reporter.info("Click on change Email Button");
         findElement(accountInfoChangeEmailButton).click();
         return this;
     }
 
-    public AccountPage updateEmail(String newEmail, UserEntity user){
-        reporter.info("Update Email to " + newEmail);
+    public AccountPage clickOnChangePasswordButton(){
+        reporter.info("Click on change Password Button");
+        findElement(accountInfoChangePasswordButton).click();
+        return this;
+    }
+
+    public AccountPage updateEmail(String newEmail, String pass){
+        reporter.info("Updating Email to " + newEmail);
 
         findElement(newEmailField).clear();
         findElement(newEmailField).sendKeys(newEmail);
 
         findElement(currentPasswordField).clear();
-        findElement(currentPasswordField).sendKeys(user.getPassword());
+        findElement(currentPasswordField).sendKeys(pass);
 
         findElement(saveAccountInfoButton).click();
-        user.setUsername(newEmail);
         return this;
     }
+
+    public AccountPage updatePassword(String pass, String newPass){
+        reporter.info("Updating Password to " + newPass);
+
+        findElement(currentPasswordField).clear();
+        findElement(currentPasswordField).sendKeys(pass);
+
+        findElement(newPasswordField).clear();
+        findElement(newPasswordField).sendKeys(newPass);
+
+        findElement(confirmNewPasswordField).clear();
+        findElement(confirmNewPasswordField).sendKeys(newPass);
+
+        findElement(saveAccountInfoButton).click();
+        return this;
+    }
+
+    public AccountPage updateFirstname(String firstname){
+        reporter.info("Updating firstname to " + firstname);
+        findElement(firstNameField).clear();
+        findElement(firstNameField).sendKeys(firstname);
+        return this;
+    }
+
+    public AccountPage updateLastname(String lastname){
+        reporter.info("Updating Lastname to " + lastname);
+        findElement(lastNameField).clear();
+        findElement(lastNameField).sendKeys(lastname);
+        return this;
+    }
+
+    public AccountPage clickOnSaveAccountInfoButton(){
+        findElement(saveAccountInfoButton).click();
+        return this;
+    }
+
 
 
 

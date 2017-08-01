@@ -27,8 +27,10 @@ public class NeeTest extends BaseTest {
 
         magazine.header.clickMagazineItem();
 
-        List<WebElement> linkElements = magazine.getWebElement(By.tagName("a"));
-        String[] linkTexts = new String[magazine.getWebElement(By.tagName("a")).size()];
+        List<WebElement> linkElements = MagazinePage.findElements(By.tagName("a"));
+
+        String[] linkTexts;
+        linkTexts = new String[linkElements.size()];
         int i = 0;
 
         //extract the link texts of each link element
@@ -40,9 +42,11 @@ public class NeeTest extends BaseTest {
         //test each link
         for (String t : linkTexts) {
 
-            magazine.findElement(By.linkText(t)).click();
-            magazine.isPageLoaded();
-            //String title = magazine.getTitle();
+            MagazinePage.findElement(By.linkText(t));
+
+            boolean test;
+            test = magazine.isPageLoaded();
+            Assert.assertTrue(test);
 
         }
 
